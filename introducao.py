@@ -27,7 +27,7 @@ O shape da imagem é definido pela altura, comprimento e número de canais.
 imagem.shape
 
 uploaded_file = st.file_uploader(
-    'Tente uma outra imagem', type="png")
+    'Tente uma outra imagem', type=["png", "jpg"])
 if uploaded_file is not None:
     img_stream = io.BytesIO(uploaded_file.getvalue())
     imagem = cv2.imdecode(np.frombuffer(img_stream.read(), np.uint8), 1)
