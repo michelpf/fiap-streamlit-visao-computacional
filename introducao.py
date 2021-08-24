@@ -61,6 +61,8 @@ temos imagem mais clara.
 
 st.image(g)
 
+g
+
 """
 ### Componente Azul
 
@@ -69,3 +71,5 @@ também.
 """
 
 st.image(b)
+
+b
