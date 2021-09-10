@@ -28,11 +28,11 @@ def download_model():
     save_dest = Path('modelo')
     save_dest.mkdir(exist_ok=True)
 
-    f_checkpoint = Path("modelos/vehicle.h5")
+    f_checkpoint = Path("modelo/vehicle.h5")
 
     if not f_checkpoint.exists():
         with st.spinner("Baixando modelo..."):
-            gdown.download(cloud_location, "modelos/vehicle.h5")
+            gdown.download(cloud_location, "modelo/vehicle.h5")
 
 
 download_model()
@@ -50,7 +50,7 @@ model = Model(inputs=vgg16.input, outputs=model)
 model.compile(optimizer="adam", loss="categorical_crossentropy",
               metrics=['accuracy'])
 
-model.load_weights("modelos/vehicle.h5")
+model.load_weights("modelo/vehicle.h5")
 
 
 """
