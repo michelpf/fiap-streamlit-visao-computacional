@@ -128,7 +128,7 @@ else:
     resultado = ("**Não é um veículo com {:.0f}% de probabilidade**".format(
         100*pred_probs[0, 0]))
 
-resultado
+st.write(resultado)
 
 """
 ## Detecção das classes do ImageNet do modelo MobileNet
