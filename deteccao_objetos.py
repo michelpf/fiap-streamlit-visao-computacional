@@ -81,7 +81,7 @@ if uploaded_file is not None:
 """
 ### Redimensionando a imagem para o tamanho do modelo
 
-O classificador Yolo (tiny) foi treinado com imagens de tamanho 416 x 416. Este modelo é mais leve e é indicado para hardwares com menos processamento.
+O classificador Yolo foi treinado com imagens de tamanho 608 x 608. Este modelo é mais leve e é indicado para hardwares com menos processamento.
 Há outras variações do classificador para imagens de maior tamanho e poder computacional.
 
 Note que como o resultado é um conjunto de coordenadas, podemos utilizar a imagem redimensionada para as detecções e logo depois 
@@ -101,8 +101,10 @@ imagem = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
 O classificador foi treinado com o dataset do [COCO](https://cocodataset.org/#home) (Common Objects in Context). O conjunto de imagens 
 deste dataset representam 80 variadas classes de objetos do nosso cotidiano.
 
-Por se tratar do modelo mais compacto e simples nem todos os objetos são facilmente detectados. Para detecções mais precisas utilize o classificador 
-YoloV3 320, 416 ou 608.
+Por se tratar do modelo mais compacto (Yolo V3 320) dependendo da resolução nem todos os objetos serão facilmente detectados. Para detecções mais precisas utilize o classificador 
+Yolo V3 416 ou 608.
+
+Ainda há um outro classificador, o YoloV3 Tiny voltado para hardwares menos complexos com bom desempenho.
 """
 imagem_o = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
 
