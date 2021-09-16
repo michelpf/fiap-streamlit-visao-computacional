@@ -10,6 +10,9 @@ from pathlib import Path
 import gdown
 
 cloud_location = "https://drive.google.com/uc?id=1ZDP9eqLpLykZtPDgPzPiXgl_8l61VSgc"
+cloud_location = "https://drive.google.com/uc?id=1QtpH_pvKrXXb8vQGnVZPp5N57OJtDifr"
+
+file_name = "yolov3.weights"
 
 
 @st.cache
@@ -18,11 +21,11 @@ def download_weights():
     save_dest = Path('peso')
     save_dest.mkdir(exist_ok=True)
 
-    f_checkpoint = Path("peso/yolov3-tiny.weights")
+    f_checkpoint = Path("peso/" + file_name)
 
     if not f_checkpoint.exists():
         with st.spinner("Baixando pesos..."):
-            gdown.download(cloud_location, "peso/yolov3-tiny.weights")
+            gdown.download(cloud_location, "peso/" + file_name)
 
 
 download_weights()
@@ -32,7 +35,7 @@ cfg_file = 'cfg/yolov3.cfg'
 #m = Darknet(cfg_file)
 
 # Pesos pré-treinados
-weight_file = 'peso/yolov3-tiny.weights'
+weight_file = 'peso/' + file_name
 # m.load_weights(weight_file)
 
 # Rótulos de classes
@@ -85,7 +88,7 @@ Note que como o resultado é um conjunto de coordenadas, podemos utilizar a imag
 interpolar os valores para desenhar na imagem original.
 """
 
-imagem_r = cv2.resize(imagem, (416, 416))
+imagem_r = cv2.resize(imagem, (608, 608))
 imagem_r = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
 
 st.image(imagem_r)
@@ -116,7 +119,7 @@ def identificar_objetos(frame):
 
     # Normalizando a imagem (fator de escala, tamanho, RGB/BGR)
     blob = cv2.dnn.blobFromImage(
-        frame, 1 / 255.0, (416, 416),  swapRB=True, crop=False)
+        frame, 1 / 255.0, (608, 608),  swapRB=True, crop=False)
     net.setInput(blob)
     layerOutputs = net.forward(ln)
 
