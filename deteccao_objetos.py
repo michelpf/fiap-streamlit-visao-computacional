@@ -64,12 +64,14 @@ pode ser utilizado em aplicações em tempo real, utilizando hardware adequado.
 imagem = cv2.imread("imagens/baby-623417_1280.jpg")
 
 st.image(imagem, channels="BGR")
+imagem.shape
 
 uploaded_file = st.file_uploader(
     'Tente uma outra imagem', type=["png", "jpg"])
 if uploaded_file is not None:
     img_stream = io.BytesIO(uploaded_file.getvalue())
     imagem = cv2.imdecode(np.frombuffer(img_stream.read(), np.uint8), 1)
+    imagem = cv2.resize(imagem, (952, 1280))
     st.image(imagem, channels="BGR")
     imagem.shape
 
@@ -99,9 +101,6 @@ deste dataset representam 80 variadas classes de objetos do nosso cotidiano.
 Por se tratar do modelo mais compacto e simples nem todos os objetos são facilmente detectados. Para detecções mais precisas utilize o classificador 
 YoloV3 320, 416 ou 608.
 """
-
-#boxes = detect_objects(m, imagem_r, iou_thresh, nms_thresh)
-
 imagem_o = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
 
 conf_threshold = 0.1
