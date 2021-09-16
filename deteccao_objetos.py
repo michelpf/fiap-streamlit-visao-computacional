@@ -9,10 +9,6 @@ import io
 from pathlib import Path
 import gdown
 
-from utils.utils import *
-from utils.darknet import Darknet
-
-
 cloud_location = "https://drive.google.com/uc?id=1ZDP9eqLpLykZtPDgPzPiXgl_8l61VSgc"
 
 
