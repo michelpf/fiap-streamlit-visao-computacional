@@ -5,6 +5,7 @@ __pycache__/
 
 # Models
 *.h5
+*.weights
 
 # C extensions
 *.so
