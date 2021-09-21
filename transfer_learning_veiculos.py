@@ -20,6 +20,10 @@ import gdown
 from keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.applications.imagenet_utils import decode_predictions
 
+import os
+import random
+
+
 cloud_location = "https://drive.google.com/uc?id=1TVeH_TsmpftLg8xBkus50n0DkX27leiE"
 
 
@@ -75,7 +79,11 @@ entre as 2 classes disponíveis: veículos ou não veículos.
 
 Foi utilizado um dataset do [Kaggle](https://www.kaggle.com/brsdincer/vehicle-detection-image-set) e o treinamento foi realizado com base neste [Notebook](https://www.kaggle.com/taha07/vehicle-or-not-detection-100) de Taha.
 """
-imagem = cv2.imread("imagens/bmw-918407_1280.jpg")
+
+file_names = next(os.walk("imagens/cars-non-cars/"))[2]
+imagem = cv2.imread(os.path.join(
+    "imagens/cars-non-cars/", random.choice(file_names)))
+#imagem = cv2.imread("imagens/bmw-918407_1280.jpg")
 
 st.image(imagem, channels="BGR")
 
