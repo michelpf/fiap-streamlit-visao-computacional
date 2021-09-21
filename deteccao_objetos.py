@@ -5,6 +5,8 @@ import numpy as np
 import pandas as pd
 import cv2
 import io
+import os
+import random
 
 from pathlib import Path
 import gdown
@@ -64,9 +66,14 @@ mesma imagem.
 Um destes classificadores que possui performance superior em tempo de detecção (50 ms) quando comparado com outros classificadores do mesmo tipo (250 ms), o [Yolo](https://pjreddie.com/darknet/yolo/), 
 pode ser utilizado em aplicações em tempo real, utilizando hardware adequado.
 """
-imagem = cv2.imread("imagens/baby-623417_1280.jpg")
 
-st.image(imagem, channels="BGR")
+file_names = next(os.walk("imagens/coco-dataset-1/"))[2]
+
+imagem = cv2.imread(os.path.join(
+    "imagens/coco-dataset-2/", random.choice(file_names)))
+imagem = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
+
+st.image(imagem)
 imagem.shape
 
 uploaded_file = st.file_uploader(
@@ -75,7 +82,8 @@ if uploaded_file is not None:
     img_stream = io.BytesIO(uploaded_file.getvalue())
     imagem = cv2.imdecode(np.frombuffer(img_stream.read(), np.uint8), 1)
     imagem = cv2.resize(imagem, (952, 1280))
-    st.image(imagem, channels="BGR")
+    imagem = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
+    st.image(imagem)
     imagem.shape
 
 """
@@ -89,11 +97,8 @@ interpolar os valores para desenhar na imagem original.
 """
 
 imagem_r = cv2.resize(imagem, (608, 608))
-imagem_r = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
-
 st.image(imagem_r)
 
-imagem = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
 
 """
 ### Detecção de objetos
@@ -106,8 +111,6 @@ Yolo V3 416 ou 608.
 
 Ainda há um outro classificador, o YoloV3 Tiny voltado para hardwares menos complexos com bom desempenho.
 """
-imagem_o = cv2.cvtColor(imagem, cv2.COLOR_BGR2RGB)
-
 conf_threshold = 0.1
 nms_threshold = 0.1
 
