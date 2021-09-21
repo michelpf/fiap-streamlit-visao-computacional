@@ -169,7 +169,7 @@ def identificar_objetos(frame):
             cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
             text = "{}".format(labels[classIDs[i]])
             cv2.putText(frame, text, (x, y - 5),
-                        cv2.FONT_HERSHEY_SIMPLEX, 1.5, color, 3)
+                        cv2.FONT_HERSHEY_SIMPLEX, 1.0, color, 2)
 
     return frame
 
