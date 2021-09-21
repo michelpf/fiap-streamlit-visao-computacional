@@ -48,7 +48,7 @@ CLASS_NAMES = ['BG', 'person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus'
 class SimpleConfig(mrcnn.config.Config):
     NAME = "coco_inference"
 
-    GPU_COUNT = 2
+    GPU_COUNT = 1
     IMAGES_PER_GPU = 1
 
     NUM_CLASSES = 81
