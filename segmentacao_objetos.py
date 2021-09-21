@@ -98,7 +98,7 @@ retângulos delimitadores. Assim o classificador pode focar sua atenção apenas
 exaustiva na imagem por completo.
 """
 
-r = model.detect([imagem], verbose=0)
+r = model.detect([imagem], verbose=1)
 
 r = r[0]
 
