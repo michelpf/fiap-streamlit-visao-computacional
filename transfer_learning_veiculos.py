@@ -83,7 +83,7 @@ Foi utilizado um dataset do [Kaggle](https://www.kaggle.com/brsdincer/vehicle-de
 file_names = next(os.walk("imagens/cars-non-cars/"))[2]
 imagem = cv2.imread(os.path.join(
     "imagens/cars-non-cars/", random.choice(file_names)))
-imagem = cv2.resize(imagem, (952, 1280))
+imagem = cv2.resize(imagem, (420, 420))
 #imagem = cv2.imread("imagens/bmw-918407_1280.jpg")
 
 st.image(imagem, channels="BGR")
