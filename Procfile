@@ -1,1 +1,1 @@
-web: sh setup.sh && streamlit run .\segmentacao_objetos.py
+web: sh setup.sh && streamlit run segmentacao_objetos.py
