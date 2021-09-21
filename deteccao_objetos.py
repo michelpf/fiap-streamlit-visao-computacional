@@ -67,7 +67,7 @@ Um destes classificadores que possui performance superior em tempo de detecção
 pode ser utilizado em aplicações em tempo real, utilizando hardware adequado.
 """
 
-file_names = next(os.walk("imagens/coco-dataset-1/"))[2]
+file_names = next(os.walk("imagens/coco-dataset-2/"))[2]
 
 imagem = cv2.imread(os.path.join(
     "imagens/coco-dataset-2/", random.choice(file_names)))
